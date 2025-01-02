@@ -1,6 +1,6 @@
--- CREATE DATABASE gym_management;
+-- CREATING DATABASE gym_management;
 USE gym_management;
--- Create the Memberships table
+-- Creating the Memberships table
 CREATE TABLE Memberships (
     membership_id INT PRIMARY KEY,
     membership_name VARCHAR(255),
@@ -8,7 +8,7 @@ CREATE TABLE Memberships (
     duration_months INT
 );
 
--- Create the Members table
+-- Creating the Members table
 CREATE TABLE Members (
     member_id INT PRIMARY KEY,
     first_name VARCHAR(255),
@@ -23,7 +23,7 @@ CREATE TABLE Members (
     FOREIGN KEY (membership_id) REFERENCES Memberships(membership_id)
 );
 
--- Create the Plan table
+-- Creating the Plan table
 CREATE TABLE [Plan] (
     plan_id INT PRIMARY KEY,
     plan_name VARCHAR(255),
@@ -34,7 +34,7 @@ CREATE TABLE [Plan] (
     features TEXT
 );
 
--- Create the Subscriptions table
+-- Creating the Subscriptions table
 CREATE TABLE Subscriptions (
     subscription_id INT PRIMARY KEY,
     subscription_start DATE,
@@ -45,7 +45,7 @@ CREATE TABLE Subscriptions (
     FOREIGN KEY (plan_id) REFERENCES [Plan](plan_id)
 );
 
--- Create the Attendance table
+-- Creating the Attendance table
 CREATE TABLE Attendance (
     attendance_id INT PRIMARY KEY,
     check_in DATETIME, 
@@ -54,7 +54,7 @@ CREATE TABLE Attendance (
     FOREIGN KEY (membership_id) REFERENCES Memberships(membership_id)
 );
 
--- Create the Health Status table
+-- Creating the Health Status table
 CREATE TABLE Health_Status (
     health_status_id INT PRIMARY KEY,
     height DECIMAL(5, 2),
@@ -67,7 +67,7 @@ CREATE TABLE Health_Status (
     FOREIGN KEY (member_id) REFERENCES Members(member_id)
 );
 
--- Create the Payments table
+-- Creating the Payments table
 CREATE TABLE Payments (
     payment_id INT PRIMARY KEY,
     payment_date DATE,
@@ -77,7 +77,7 @@ CREATE TABLE Payments (
     FOREIGN KEY (member_id) REFERENCES Members(member_id)
 );
 
--- Create the Member Goals table
+-- Creating the Member Goals table
 CREATE TABLE Member_Goals (
     goal_id INT PRIMARY KEY,
     goal_type VARCHAR(255),
@@ -89,7 +89,7 @@ CREATE TABLE Member_Goals (
     FOREIGN KEY (member_id) REFERENCES Members(member_id)
 );
 
--- Create the Staff table
+-- Creating the Staff table
 CREATE TABLE Staff (
     staff_id INT PRIMARY KEY,
     first_name VARCHAR(255),
@@ -101,7 +101,7 @@ CREATE TABLE Staff (
     salary DECIMAL(10, 2)
 );
 
--- Create the Equipment table
+-- Creating the Equipment table
 CREATE TABLE Equipment (
     equipment_id INT PRIMARY KEY,
     equipment_name VARCHAR(255),
@@ -113,7 +113,7 @@ CREATE TABLE Equipment (
     FOREIGN KEY (maintained_by) REFERENCES Staff(staff_id)
 );
 
--- Create the Classes table
+-- Creating the Classes table
 CREATE TABLE Classes (
     class_id INT PRIMARY KEY,
     class_name VARCHAR(255),
@@ -126,7 +126,7 @@ CREATE TABLE Classes (
     FOREIGN KEY (instructor_id) REFERENCES Staff(staff_id)
 );
 
--- Create the Class Enrollments table
+-- Creating the Class Enrollments table
 CREATE TABLE Class_Enrollments (
     enrollment_id INT PRIMARY KEY,
     enrollment_date DATE,
@@ -136,14 +136,14 @@ CREATE TABLE Class_Enrollments (
     FOREIGN KEY (class_id) REFERENCES Classes(class_id)
 );
 
--- Insert data into Memberships
+-- Inserting data into Memberships
 INSERT INTO Memberships (membership_id, membership_name, price, duration_months)
 VALUES
 (1, 'Basic', 50.00, 1),
 (2, 'Standard', 120.00, 3),
 (3, 'Premium', 400.00, 12);
 
--- Insert data into Members
+-- Inserting data into Members
 INSERT INTO Members (member_id, first_name, last_name, date_of_birth, email, phone_number, membership_id, membership_type, membership_start, membership_end)
 VALUES
 (1, 'Amit', 'Sharma', '1990-05-12', 'amit.sharma@example.com', '1234567890', 1, 'Basic', '2024-01-01', '2024-02-01'),
@@ -159,7 +159,7 @@ VALUES
 (11, 'Hao', 'Zhang', '1986-10-11', 'hao.zhang@example.com', '9638527410', 2, 'Standard', '2024-01-01', '2024-04-01'),
 (12, 'Emma', 'Williams', '1993-01-25', 'emma.williams@example.com', '7893216540', 3, 'Premium', '2024-01-01', '2025-01-01');
 
--- Insert data into Attendance
+-- Inserting data into Attendance
 INSERT INTO Attendance (attendance_id, check_in, check_out, membership_id)
 VALUES
 (1, '2024-01-02 08:00:00', '2024-01-02 10:00:00', 1),
@@ -175,7 +175,7 @@ VALUES
 
 
 
--- Insert data into Health_Status
+-- Inserting data into Health_Status
 INSERT INTO Health_Status (health_status_id, height, weight, body_fat_percentage, BMI, remark, recorded_date, member_id)
 VALUES
 (1, 170.5, 70.2, 15.5, 24.1, 'Normal', '2024-01-02', 1),
@@ -191,7 +191,7 @@ VALUES
 (11, 165.0, 67.0, 28.0, 24.5, 'Overweight', '2024-01-12', 11),
 (12, 169.5, 65.0, 23.5, 22.6, 'Normal', '2024-01-13', 12);
 
--- Insert data into Payments
+-- Inserting data into Payments
 INSERT INTO Payments (payment_id, payment_date, amount, payment_method, member_id)
 VALUES
 (1, '2024-01-01', 50.00, 'Credit Card', 1),
@@ -207,7 +207,7 @@ VALUES
 (11, '2024-01-01', 120.00, 'Bank Transfer', 11),
 (12, '2024-01-01', 400.00, 'Cash', 12);
 
--- Insert data into Member_Goals
+-- Inserting data into Member_Goals
 INSERT INTO Member_Goals (goal_id, goal_type, start_date, target_date, start_value, target_value, member_id)
 VALUES
 (1, 'Weight Loss', '2024-01-01', '2024-06-01', 70.2, 65.0, 1),
@@ -222,7 +222,7 @@ VALUES
 (10, 'Weight Loss', '2024-01-01', '2024-06-01', 60.0, 55.0, 10),
 (11, 'Muscle Gain', '2024-01-01', '2024-12-01', 67.0, 70.0, 11),
 (12, 'Weight Maintenance', '2024-01-01', '2024-12-31', 65.0, 65.0, 12);
--- Insert data into Plan
+-- Inserting data into Plan
 INSERT INTO [Plan] (plan_id, plan_name, plan_mode, duration_months, validity, amount, features)
 VALUES
 (1, 'Yoga Plan', 'Individual', 3, '2024-06-01', 150.00, 'Access to yoga classes, flexibility improvement'),
@@ -240,7 +240,7 @@ VALUES
 (13, 'Senior Wellness', 'Individual', 12, '2025-01-01', 400.00, 'Customized fitness for seniors'),
 (14, 'Family Plan', 'Group', 12, '2025-01-01', 800.00, 'Fitness for up to 4 family members');
 
--- Insert data into Subscriptions
+-- Inserting data into Subscriptions
 INSERT INTO Subscriptions (subscription_id, subscription_start, subscription_end, member_id, plan_id)
 VALUES
 (1, '2024-01-01', '2024-03-31', 1, 1),
@@ -258,7 +258,7 @@ VALUES
 (13, '2024-01-01', '2024-12-31', 5, 13),
 (14, '2024-01-01', '2024-12-31', 9, 14);
 
--- Insert data into Staff
+-- Inserting data into Staff
 INSERT INTO Staff (staff_id, first_name, last_name, role, hire_date, phone_number, email, salary)
 VALUES
 (1, 'Karan', 'Patel', 'Trainer', '2022-01-15', '9995554440', 'karan.patel@example.com', 3500.00),
@@ -274,7 +274,7 @@ VALUES
 (11, 'Chris', 'White', 'Martial Arts Trainer', '2023-02-18', '9895554450', 'chris.white@example.com', 4000.00),
 (12, 'Emma', 'Smith', 'Senior Wellness Coach', '2021-07-25', '9885554451', 'emma.smith@example.com', 3300.00);
 
--- Insert data into Equipment
+-- Inserting data into Equipment
 INSERT INTO Equipment (equipment_id, equipment_name, purchase_date, condition_eq, location, last_maintenance_date, maintained_by)
 VALUES
 (1, 'Treadmill', '2020-01-01', 'Good', 'Cardio Section', '2023-12-01', 7),
@@ -290,7 +290,7 @@ VALUES
 (11, 'Pilates Reformers', '2022-06-15', 'New', 'Pilates Studio', '2024-01-01', 7),
 (12, 'Kettlebells', '2021-09-10', 'Good', 'Weightlifting Area', '2023-11-15', 7);
 
--- Insert data into Classes
+-- Inserting data into Classes
 INSERT INTO Classes (class_id, class_name, class_type, schedule, duration, required_equipment, instructor_id)
 VALUES
 (1, 'Morning Yoga', 'Group', 'Monday, Wednesday, Friday 7-8 AM', 60, 4, 2),
@@ -306,6 +306,7 @@ VALUES
 (11, 'Kids Karate', 'Group', 'Saturday 10-11 AM', 60, 8, 11),
 (12, 'Family Fitness Class', 'Group', 'Sunday 4-5 PM', 60, 4, 8);
 
+-- Inserting data into Class Enrollments
 INSERT INTO Class_Enrollments (enrollment_id, enrollment_date, member_id, class_id)
 VALUES
 (1, '2024-01-01', 1, 1),  -- Member 1 enrolled in Morning Yoga
@@ -320,8 +321,8 @@ VALUES
 (10, '2024-01-10', 10, 10), -- Member 10 enrolled in Endurance Running
 (11, '2024-01-11', 11, 11); -- Member 11 enrolled in Kids Karate
 
+-- View 1
 Go
-
 CREATE VIEW MembershipPaymentsReport AS
 SELECT 
     m.member_id,  
@@ -335,8 +336,8 @@ FROM Members m
 JOIN Memberships mp ON m.membership_id = mp.membership_id
 JOIN Payments p ON m.member_id = p.member_id; 
 
+-- View 2
 Go
-
 CREATE VIEW ClassEnrollmentsReport AS
 SELECT 
     c.class_name,  
@@ -350,8 +351,8 @@ LEFT JOIN Class_Enrollments ce ON c.class_id = ce.class_id
 LEFT JOIN Staff s ON c.instructor_id = s.staff_id  
 GROUP BY c.class_name, c.schedule, c.duration, s.first_name, s.last_name; 
 
+-- View 3
 Go
-
 CREATE VIEW HealthStatusOverview AS
 SELECT 
     m.member_id,  
@@ -364,6 +365,8 @@ SELECT
     hs.remark 
 FROM Members m
 JOIN Health_Status hs ON m.member_id = hs.member_id; 
+
+-- View 4
 Go
 CREATE VIEW RevenueByPlan AS
 SELECT 
@@ -375,22 +378,22 @@ FROM [Plan] p
 JOIN Subscriptions s ON p.plan_id = s.plan_id 
 GROUP BY p.plan_name, p.amount; 
 
--- Add CHECK constraints to the Health_Status table
+-- Adding CHECK constraints to the Health_Status table
 ALTER TABLE Health_Status
 ADD CONSTRAINT chk_BMI_range CHECK (BMI BETWEEN 10 AND 50);
 
 ALTER TABLE Health_Status
 ADD CONSTRAINT chk_body_fat_percentage CHECK (body_fat_percentage BETWEEN 0 AND 100);
 
--- Add CHECK constraint to the Payments table
+-- Adding CHECK constraint to the Payments table
 ALTER TABLE Payments
 ADD CONSTRAINT chk_payment_amount_positive CHECK (amount > 0);
 
--- Add computed column for full_name in Members table
+-- Adding computed column for full_name in Members table
 ALTER TABLE Members
 ADD full_name AS (CONCAT(first_name, ' ', last_name));
 
--- Add computed column for BMI_status in Health_Status table
+-- Adding computed column for BMI_status in Health_Status table
 ALTER TABLE Health_Status
 ADD BMI_status AS (
     CASE
