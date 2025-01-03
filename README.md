@@ -32,12 +32,14 @@ Integrate with payment gateways (e.g., Stripe, PayPal) for seamless online payme
 - Advanced Reporting & Analytics: Generate detailed reports and analytics for gym administrators to analyze business performance.
 
 ## Getting Started:
-1. Create the database:
+1. Clone the repository: git clone https://github.com/PremkumarSherinRajkumari/gym-management-system.git
+2. Navigate to the project directory: cd Gym Management System.sql
+3. Create the database:
 CREATE DATABASE gym_management;
-2. Use the database:
+4. Use the database:
 USE gym_management;
-3. Execute the provided SQL script to create the necessary tables
-4. Interaction with the Database
+5. Execute the provided SQL script to create the necessary tables
+6. Interaction with the Database
 After setting up the database, you can perform the following operations:
 
 Query and manage member information.
